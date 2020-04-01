@@ -38,49 +38,49 @@ static void INTERRUPT_init(void);
 /* Clock initialization function */
 static void CLK_init(void)
 {
-    OSCCON1 = _OSCCON1_NOSC2_MASK 
-            | _OSCCON1_NOSC1_MASK;     /* HFINTOSC Oscillator */
-    
-    OSCFRQ = ~_OSCFREQ_HFFRQ_MASK;     /* Set HFFRQ to 1 MHz */
+    /* set HFINTOSC Oscillator */
+    OSCCON1bits.NOSC = 6;
+    /* set HFFRQ to 1 MHz */
+    OSCFRQbits.HFFRQ = 0;
 }
 
 /* PORT initialization function */
 static void PORT_init(void)
 {
-    TRISE   &= ~_TRISE_TRISE0_MASK;         /* Set RE0 pin as output (LED) */
-    TRISA   |= _TRISA_TRISA0_MASK;          /* Set RA0 pin as input */
+    TRISEbits.TRISE0 = 0;   /* Set RE0 pin as output (LED) */
+    TRISAbits.TRISA0 = 1;   /* Set RA0 pin as input */
     
-    ANSELA  &= ~_ANSELA_ANSELA0_MASK;       /* Enable Digital Input buffers for RA0 */
+    ANSELAbits.ANSELA0 = 0; /* Enable Digital Input buffers for RA0 */
     
-    WPUA    |= _WPUA_WPUA0_MASK;            /* Enable weak pull-up for RA0 */
+    WPUAbits.WPUA0 = 1;     /* Enable weak pull-up for RA0 */
 }
 
 /* IOC initialization function */
 static void IOC_init(void)
 {
-    IOCAF   &= ~_IOCAF_IOCAF0_MASK;         /* Clear interrupt flag */
+    IOCAFbits.IOCAF0 = 0;   /* Clear interrupt flag */
     
-    IOCAN   |= _IOCAN_IOCAN0_MASK;          /* Enable IOC on negative change */
+    IOCANbits.IOCAN0 = 1;   /* Enable IOC on negative change */
     
-    PIE0    |= _PIE0_IOCIE_MASK;            /* Enable IOC interrupt */
+    PIE0bits.IOCIE = 1;     /* Enable IOC interrupt */
 }
 
 /* Interrupt initialization function */
 static void INTERRUPT_init(void)
 {
-    INTCON = _INTCON_GIE_MASK;
+    INTCONbits.GIE = 1;     /* Enable global interrupts */
 }
 
 /* IOC0 ISR function */
 static void IOC0_ISR (void)
 {
-    IOCAF &= ~_IOCAF_IOCAF0_MASK;       /* Clear the interrupt flag */
+    IOCAFbits.IOCAF0 = 0;   /* Clear the interrupt flag */
 }
 
 /* Interrupt handler function */
 void __interrupt() INTERRUPT_InterruptManager (void)
 {
-    if(IOCAF & _IOCAF_IOCAF0_MASK)          /* Check the interrupt flag */
+    if(IOCAFbits.IOCAF0)    /* Check the interrupt flag */
     {
         IOC0_ISR();
     }
@@ -96,10 +96,10 @@ void main(void)
     while(1)
     {
         /* Turn the LED on*/
-        LATE &= ~_LATE_LATE0_MASK;
+        LATEbits.LATE0 = 0;
         __delay_ms(DELAY_MS);
         /* Turn the LED off*/
-        LATE |= _LATE_LATE0_MASK;
+        LATEbits.LATE0 = 1;
         
         SLEEP();
     }
