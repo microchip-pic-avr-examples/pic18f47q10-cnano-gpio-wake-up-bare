@@ -30,13 +30,13 @@
 #define _XTAL_FREQ  1000000UL
 #define DELAY_MS    100
 
-static void CLK_init(void);
-static void PORT_init(void);
-static void IOC_init(void);
-static void INTERRUPT_init(void);
+static void CLK_Initialize(void);
+static void PORT_Initialize(void);
+static void IOC_Initialize(void);
+static void INTERRUPT_Initialize(void);
 
 /* Clock initialization function */
-static void CLK_init(void)
+static void CLK_Initialize(void)
 {
     /* set HFINTOSC Oscillator */
     OSCCON1bits.NOSC = 6;
@@ -45,7 +45,7 @@ static void CLK_init(void)
 }
 
 /* PORT initialization function */
-static void PORT_init(void)
+static void PORT_Initialize(void)
 {
     TRISEbits.TRISE0 = 0;   /* Set RE0 pin as output (LED) */
     TRISAbits.TRISA0 = 1;   /* Set RA0 pin as input */
@@ -56,7 +56,7 @@ static void PORT_init(void)
 }
 
 /* IOC initialization function */
-static void IOC_init(void)
+static void IOC_Initialize(void)
 {
     IOCAFbits.IOCAF0 = 0;   /* Clear interrupt flag */
     
@@ -66,7 +66,7 @@ static void IOC_init(void)
 }
 
 /* Interrupt initialization function */
-static void INTERRUPT_init(void)
+static void INTERRUPT_Initialize(void)
 {
     INTCONbits.GIE = 1;     /* Enable global interrupts */
 }
@@ -88,10 +88,10 @@ void __interrupt() INTERRUPT_InterruptManager (void)
 
 void main(void) 
 {
-    CLK_init();
-    PORT_init();
-    IOC_init();
-    INTERRUPT_init();
+    CLK_Initialize();
+    PORT_Initialize();
+    IOC_Initialize();
+    INTERRUPT_Initialize();
     
     while(1)
     {
