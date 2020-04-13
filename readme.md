@@ -29,6 +29,7 @@ The following configurations must be made for this project:
 The RA0 will be connected to the user button using a wire.
 
 ## Operation
+
 Run the code. The device is put to sleep. When pressing the button, an interrupt will be generated and the device will wake up. As a signal, the LED will be turned on, will stay on for 100ms, and then it will be turned off.
 
 <img src="images/demo.gif" alt="Demo" width="500"/>
