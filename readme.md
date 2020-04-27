@@ -58,17 +58,17 @@ The RA0 will be connected to the user button using a wire.
 
 3. Set *pic18f47q10-cnano-gpio-wake-up-bare.X* project as main project. Right click on the project in the *Projects* tab and click *Set as Main Project*:
 
-<br><img src="images/gpio-wake-upe-main-project.png" width="600">
+<br><img src="images/gpio-wake-up-main-project.png" width="400">
 
 4. Select the *PIC18F47Q10 Curiosity Nano* in the *Hardware Tool* section of the project settings:
   - Right click on the project and click *Properties*;
   - Select the *PIC18F47Q10 Curiosity Nano* (click on the SN) in the *Hardware Tool* tab and then click *OK*:
 
-<br><img src="images/gpio-wake-up-project-properties.PNG" width="600">
+<br><img src="images/gpio-wake-up-project-properties.PNG" width="700">
 
 5. Program the project to the board: right click on the project and click *Make and Program Device*:
 
-<br><img src="images/gpio-wake-up-make-and-program-device.png" width="600">
+<br><img src="images/gpio-wake-up-make-and-program-device.png" width="400">
 
 Result:
 
