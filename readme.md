@@ -76,4 +76,4 @@ Result:
 
 ## Summary 
 
-This project showcases how the General Purpose Input/Output pins on the PIC18-Q43 can be used as inputs and outputs. The device is put in Sleep mode and an interrupt is used to wake it up. 
+This project showcases how the General Purpose Input/Output pins on the PIC18F47Q10 can be used as inputs and outputs. The device is put in Sleep mode and an interrupt is used to wake it up. 
