@@ -5,7 +5,7 @@
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.pic18f47q10-cnano-gpio-wake-up-bare",
         "version": "1.0.2",
-        "displayName": "PIC18F47Q10 GPIO Wake Up",
+        "displayName": "GPIO Wake Up",
         "projectName": "pic18f47q10-cnano-gpio-wake-up-bare",
         "shortDescription": "This project showcases how the General Purpose Input/Output pins on the PIC18F47Q10 can be used as inputs and outputs. The device is put in Sleep mode and an interrupt is used to wake it up.",
         "ide": {
